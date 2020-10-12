@@ -1,0 +1,7 @@
+_build/
+.git/
+.circleci/
+.elixir_ls/
+test/
+Dockerfile
+deps
