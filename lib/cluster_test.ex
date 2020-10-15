@@ -18,7 +18,10 @@ defmodule ClusterTest do
       ec_example: [
         strategy: ClusterEC2.Strategy.Tags,
         config: [
-          ec2_tagname: "cluster_test"
+          app_prefix: :cluster_test,
+          ec2_tagname: "cluster_test",
+          ip_to_nodename: &build_real_hostname/2,
+          show_debug: true
         ]
       ]
     ]
@@ -30,5 +33,11 @@ defmodule ClusterTest do
 
     opts = [strategy: :one_for_one, name: __MODULE__]
     Supervisor.start_link(children, opts)
+  end
+
+  def build_real_hostname(list, app_prefix) when is_list(list) do
+    list
+    |> Enum.map(&String.replace(&1, ".", "-"))
+    |> Enum.map(fn ip -> :"#{app_prefix}@ip-#{ip}" end)
   end
 end
