@@ -15,14 +15,10 @@ defmodule ClusterTest do
 
   def start(_type, _args) do
     topologies = [
-      gossip_example: [
-        strategy: Cluster.Strategy.Gossip,
+      ec_example: [
+        strategy: ClusterEC2.Strategy.Tags,
         config: [
-          port: 45892,
-          if_addr: "0.0.0.0",
-          multicast_addr: "230.1.1.251",
-          multicast_ttl: 1,
-          secret: "somepassword"
+          ec2_tagname: "cluster_test"
         ]
       ]
     ]

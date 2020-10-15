@@ -22,7 +22,8 @@ defmodule ClusterTest.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:libcluster, "~> 3.2"}
+      {:libcluster, "~> 3.2"},
+      {:libcluster_ec2, "~> 0.5"}
     ]
   end
 end
