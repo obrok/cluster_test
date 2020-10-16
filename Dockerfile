@@ -23,4 +23,7 @@ RUN apk add --no-cache \
 COPY --from=build /tmp/cluster_test/_build/prod/rel/cluster_test ./
 COPY --from=build /tmp/cluster_test/script/start.sh ./bin
 
+EXPOSE 4369
+EXPOSE 4370
+
 CMD [ "/bin/bash", "bin/start.sh" ]
