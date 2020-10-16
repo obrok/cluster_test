@@ -11,8 +11,6 @@ RUN MIX_ENV=prod mix release
 
 FROM elixir:1.10.3-alpine
 
-WORKDIR /cluster_test
-
 RUN apk add --no-cache \
   bash \
   ca-certificates \
